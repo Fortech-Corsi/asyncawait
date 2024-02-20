@@ -6,11 +6,11 @@ internal class Print { }
 
 class Program
 {
-    static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         Console.WriteLine("START");
 
-        HttpCall httpData = DoHttpCall();
+        Task<HttpCall> httpData = DoHttpCall();
         BigData bigData = RetrieveBigData();
         Print print = PrintData();        
 
@@ -28,10 +28,10 @@ class Program
         return new BigData();
     }
 
-    private static HttpCall DoHttpCall()
+    private async static Task<HttpCall> DoHttpCall()
     {
         Console.WriteLine("DoHttpCall START");
-        Task.Delay(3000).Wait();
+        await Task.Delay(3000);
         Console.WriteLine("DoHttpCall END");
 
         return new HttpCall();

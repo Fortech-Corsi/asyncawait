@@ -1,5 +1,7 @@
 
 // These classes are intentionally empty for the purpose of this example. They are simply marker classes for the purpose of demonstration, contain no properties, and serve no other purpose.
+using System.Diagnostics;
+
 internal class HttpCall { }
 internal class BigData { }
 internal class Print { }
@@ -8,14 +10,16 @@ class Program
 {
     public static async Task Main(string[] args)
     {
-        Console.WriteLine("START");
+        Stopwatch s = new Stopwatch();
+        s.Start();
+
+        Console.WriteLine($"START {s.ElapsedMilliseconds}");
 
         Task<HttpCall> httpData = DoHttpCall();
         BigData bigData = RetrieveBigData();
         Print print = PrintData();        
 
-        Console.WriteLine("END");
-        Console.ReadLine();
+        Console.WriteLine($"END {s.ElapsedMilliseconds}");
     }
 
 
